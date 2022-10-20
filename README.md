@@ -1,6 +1,8 @@
 # wordle-solver
 Not a completely automated bot, but helps in solving Wordle quicker.
 
+[words.txt](https://github.com/NiladriMallik/wordle-solver/blob/main/words.txt) and [words2.txt](https://github.com/NiladriMallik/wordle-solver/blob/main/words2.txt) are lists of English words, any of which we could use.
+
 Instructions to use wordle-solver
 
 1. This wordle-solver uses the python library pyautogui to control the keyboard and automatically type in the letters. After executing the program, at times when         pyautogui needs to type in the letters in the wordle window, switch to that window, or else pyautogui will type the words in the terminal itself.
