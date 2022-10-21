@@ -19,6 +19,8 @@ Color corresponding to the state of the word of each line after pressing enter
 #row will contain the states of all the five boxes of each line.
 #the state of each box will be in the format [state,letter]
 
+global wordList
+
 with open('words2.txt') as file:
     wordList=file.read().splitlines()
 
@@ -37,7 +39,9 @@ if start.lower()=='y':
     print("your response was "+start+'.')
     print("Typing the word now. Switch to the other window...")
     sleep(3)
-    while(state!=2):
+    level=5
+    
+    while(state!=2 or level>0):
         
         #write the word to wordle screen
         pyautogui.write(word,interval=0.25)
@@ -62,30 +66,43 @@ if start.lower()=='y':
             
         #if word is valid but not the correct answer    
         elif state==1:
-
+            
             for i in range(len(row)):
                 row[i][0]=int(input("State of the {} index letter: 0=Gray, 1=Yellow, 2=Green:\t".format(i)))
+                
+                #each letter of the entered word is assigned to the second element of each list in the list row
                 row[i][1]=word[i]
                 
+                #each letter will be scanned
                 if row[i][0]==0:
+                    
+                    count=0
+                    #if the word contains more than one instance of the letter, don't remove from the dictionary those words that contain the letter
+                    y=word[i]
+                    for y in word:
+                        if(y==word[i]):
+                            count+=1
+                    if count>1:
+                        continue
+                    
                     #keep only those words that do not have the letter
                     wordList=[k for k in wordList if row[i][1] not in k]
                     # print(wordList)
                     print(len(wordList))
                     continue
                 
-                elif row[i][0]==1:
+                if row[i][0]==1:
                     #keep only those words that have the letter but in another position
                     wordList=[k for k in wordList if row[i][1] in k and row[i][1]!=k[i]]
                     print(len(wordList))
                     continue
                 
-                elif row[i][0]==2:
+                if row[i][0]==2:
                     #keep only those words
                     wordList=[k for k in wordList if row[i][1]==k[i]]
                     print(len(wordList))
                     continue
-                 
+                
             if word in wordList:
                 wordList.remove(word)
                 
@@ -99,8 +116,10 @@ if start.lower()=='y':
             sleep(2)
             continue
         #if word is the correct answer
-        else:
+        if state==2:
             state=2
+            break
+        level=level-1
 
 if state==2:
     print("So, the correct answer is: {}".format(word))
