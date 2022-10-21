@@ -44,7 +44,7 @@ if start.lower()=='y':
     while(state!=2 or level>0):
         
         #write the word to wordle screen
-        pyautogui.write(word,interval=0.25)
+        pyautogui.write(word,interval=0.10)
         pyautogui.press('enter')
         sleep(1)
         state=int(input("Switch to this window. Is the word valid? 0=invalid, 1=valid but incorrect, 2=correct: "))
@@ -88,25 +88,25 @@ if start.lower()=='y':
                     #keep only those words that do not have the letter
                     wordList=[k for k in wordList if row[i][1] not in k]
                     # print(wordList)
-                    print(len(wordList))
+                    print(f"Words in wordlist: {len(wordList)}")
                     continue
                 
                 if row[i][0]==1:
                     #keep only those words that have the letter but in another position
                     wordList=[k for k in wordList if row[i][1] in k and row[i][1]!=k[i]]
-                    print(len(wordList))
+                    print(f"Words in wordlist: {len(wordList)}")
                     continue
                 
                 if row[i][0]==2:
                     #keep only those words
                     wordList=[k for k in wordList if row[i][1]==k[i]]
-                    print(len(wordList))
+                    print(f"Words in wordlist: {len(wordList)}")
                     continue
                 
             if word in wordList:
                 wordList.remove(word)
                 
-            print(f"Words in wordlist: {len(wordList)}")
+            # print(f"Words in wordlist: {len(wordList)}")
             
             if not wordList:
                 break
