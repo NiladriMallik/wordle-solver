@@ -14,5 +14,4 @@ Instructions to use wordle-solver
 
 So, we don't have to type in the words in Wordle, only the input in the terminal, nor think of the words to enter. PyAutoGui and Python will do that, respectively.
 
-**A warning:**
-This code does not work properly when Python inputs a word in which a particular letter is present more than once.
+![SCREENSHOT](https://user-images.githubusercontent.com/51795733/197353421-3c1f2788-2efe-4984-8b87-8e887a68ee6e.png)
