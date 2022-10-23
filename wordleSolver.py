@@ -117,7 +117,6 @@ if start.lower()=='y':
             continue
         #if word is the correct answer
         if state==2:
-            state=2
             break
         level=level-1
 
