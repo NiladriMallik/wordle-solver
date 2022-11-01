@@ -1,5 +1,5 @@
 # wordle-solver
-Not a completely automated bot, but helps in solving Wordle quicker.
+Starts with a given word, and then eliminates words from its dictionary depending on which letters are present or not present in the correct word.
 
 [words.txt](https://github.com/NiladriMallik/wordle-solver/blob/main/words.txt) and [words2.txt](https://github.com/NiladriMallik/wordle-solver/blob/main/words2.txt) are lists of English words, any of which we could use.
 
