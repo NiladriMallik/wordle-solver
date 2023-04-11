@@ -1,4 +1,4 @@
-import pyautogui
+import pyautogui as pg
 from time import sleep
 import random
 
@@ -44,8 +44,8 @@ if start.lower()=='y':
     while(state!=2 or level>0):
         
         #write the word to wordle screen
-        pyautogui.write(word,interval=0.10)
-        pyautogui.press('enter')
+        pg.write(word,interval=0.10)
+        pg.press('enter')
         sleep(1)
         state=int(input("Switch to this window. Is the word valid? 0=invalid, 1=valid but incorrect, 2=correct: "))
         
@@ -54,7 +54,7 @@ if start.lower()=='y':
             print("Typing the next word now. Switch to the other window...")
             sleep(3)
             for i in range(5):
-                pyautogui.press('backspace')
+                pg.press('backspace')
 
             wordList.remove(word)
             
